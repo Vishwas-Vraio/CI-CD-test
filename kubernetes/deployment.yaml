@@ -1,0 +1,19 @@
+apiVersion: apps/v1          # API version used to create the deployment
+kind: Deployment             # Type of Kubernetes object
+metadata:
+  name: go-app               # Name of the deployment
+spec:
+  replicas: 2                # Number of pod replicas to maintain
+  selector:
+    matchLabels:
+      app: go-app            # Label selector to identify pods managed by this deployment
+  template:
+    metadata:
+      labels:
+        app: go-app          # Label assigned to pods created by this deployment
+    spec:
+      containers:
+      - name: go-app         # Name of the container
+        image: vishwasvraio/testdocker:latest  # Docker image to use for this container
+        ports:
+        - containerPort: 8080  # Port exposed by the container
